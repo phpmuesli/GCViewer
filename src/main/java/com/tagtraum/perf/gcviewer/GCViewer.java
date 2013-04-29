@@ -14,13 +14,14 @@ public class GCViewer {
 
 	public static void main(final String[] args) {
 	    // TODO: unify parameter handling from command line
-        if (args.length == 2) {
+        if (args.length >= 2) {
         	final String gcfile = args[0];
         	final String summaryFilePath = args[1];
+		final DataWriterType dwType = args.length == 3 ? DataWriterType.valueOf(args[2]) : DataWriterType.SUMMARY;
 
             //export summary:
             try {
-                exportSummary(summaryFilePath, gcfile);
+                exportSummary(summaryFilePath, gcfile, dwType);
                 System.exit(0);
             }
             catch(Exception e) {
@@ -37,8 +38,8 @@ public class GCViewer {
         }
     }
 	
-	private static void exportSummary(String summaryFilePath, String gcFilename) throws DataReaderException, IOException {
-	    DataWriter summaryWriter = DataWriterFactory.getDataWriter(new File(summaryFilePath), DataWriterType.SUMMARY);
+	private static void exportSummary(String summaryFilePath, String gcFilename, DataWriterType dwType) throws DataReaderException, IOException {
+	    DataWriter summaryWriter = DataWriterFactory.getDataWriter(new File(summaryFilePath), dwType);
 	    try {
 	        DataReaderFacade dataReaderFacade = new DataReaderFacade();
 	        GCModel model = dataReaderFacade.loadModel(new File(gcFilename).toURI().toURL(), false, null);
