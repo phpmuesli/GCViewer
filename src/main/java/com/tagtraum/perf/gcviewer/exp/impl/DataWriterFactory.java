@@ -53,6 +53,7 @@ public class DataWriterFactory {
             case CSV     : return new CSVDataWriter(outputStream);
             case SIMPLE  : return new SimpleGcWriter(outputStream);
             case SUMMARY : return new SummaryDataWriter(outputStream, configuration); 
+            case WIDECSV : return new WideCSVDataWriter(outputStream);
             default : throw new IOException(LocalisationHelper.getString("datawriterfactory_instantiation_failed") + " " + file);
         }
     }

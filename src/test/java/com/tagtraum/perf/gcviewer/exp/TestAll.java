@@ -11,7 +11,8 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-SimpleGcWriterTest.class
+SimpleGcWriterTest.class,
+WideCSVWriterTest.class
 })
 public class TestAll {
 

@@ -53,7 +53,7 @@ public class SimpleGcWriter extends AbstractDataWriter {
      * @param typeName name of the gc event type
      * @return name without spaces
      */
-    private String getSimpleType(GCEvent event) {
+    protected String getSimpleType(GCEvent event) {
         String simpleType;
         
         if (isYoungOnly(event)) {

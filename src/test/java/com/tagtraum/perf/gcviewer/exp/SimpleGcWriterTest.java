@@ -3,6 +3,7 @@ package com.tagtraum.perf.gcviewer.exp;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Date;
 import java.util.Locale;
 
 import org.junit.Before;
@@ -21,7 +22,7 @@ import com.tagtraum.perf.gcviewer.model.GCModel;
  * <p>created on: 08.12.2012</p>
  */
 public class SimpleGcWriterTest {
-    private GCModel gcModel;
+    protected GCModel gcModel;
     
     @Before
     public void setUp() throws Exception {
@@ -38,6 +39,7 @@ public class SimpleGcWriterTest {
 
         GCEvent gcEvent = new GCEvent(0.677, 175499, 104936, 249088, 0.0300629, AbstractGCEvent.Type.GC);
         GCEvent parNew = new GCEvent(0.677, 118010, 13046, 118016, 0.0299506, AbstractGCEvent.Type.PAR_NEW);
+        gcEvent.setDateStamp(new Date());
         gcEvent.add(parNew);
 
         GCEvent gcEvent2 = new GCEvent(0.708, 109176, 109176, 249088, 0.0004006, AbstractGCEvent.Type.GC);
